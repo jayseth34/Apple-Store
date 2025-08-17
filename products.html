@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - The Apple Store.in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --apple-blue: #007aff;
+        --apple-green: #34c759;
+        --apple-orange: #ff9500;
+        --apple-red: #ff3b30;
+        --apple-purple: #af52de;
+        --apple-gray: #8e8e93;
+        --apple-light-gray: #f2f2f7;
+        --apple-dark: #1d1d1f;
+        --apple-text: #1d1d1f;
+        --apple-text-secondary: #86868b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "SF Pro Display", "Inter", -apple-system,
+          BlinkMacSystemFont, sans-serif;
+        line-height: 1.47059;
+        letter-spacing: -0.022em;
+        color: var(--apple-text);
+        background-color: #ffffff;
+        overflow-x: hidden;
+      }
+
+      /* Marquee Top Bar */
+      .marquee-container {
+        background-color: var(--apple-dark);
+        color: white;
+        padding: 8px 0;
+        overflow: hidden;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .marquee {
+        display: flex;
+        animation: marquee 30s linear infinite;
+        white-space: nowrap;
+      }
+
+      .marquee-item {
+        margin-right: 80px;
+        flex-shrink: 0;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* Navigation */
+      .navbar {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 8px 0;
+      }
+
+      .navbar-brand img {
+        height: 44px;
+        width: auto;
+      }
+
+      .navbar-nav .nav-link {
+        color: var(--apple-text) !important;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        padding: 8px 12px !important;
+        transition: color 0.3s ease;
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: var(--apple-blue) !important;
+      }
+
+      .navbar-toggler {
+        border: none;
+        padding: 4px 0;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      /* Page Header */
+      .page-header {
+        padding: 60px 0 40px 0;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--apple-light-gray) 0%,
+          #e8e8ed 100%
+        );
+      }
+
+      .page-header h1 {
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 1.08;
+        margin-bottom: 16px;
+        color: var(--apple-text);
+      }
+
+      .page-header p {
+        font-size: 21px;
+        color: var(--apple-text-secondary);
+        margin-bottom: 0;
+      }
+
+      /* Filter Section */
+      .filter-section {
+        padding: 40px 0;
+        border-bottom: 1px solid var(--apple-light-gray);
+      }
+
+      .filter-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .results-info {
+        font-size: 14px;
+        color: var(--apple-text-secondary);
+      }
+
+      .filter-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .sort-dropdown {
+        border: 1px solid var(--apple-light-gray);
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-size: 14px;
+        background: white;
+        color: var(--apple-text);
+        min-width: 180px;
+      }
+
+      .sort-dropdown:focus {
+        outline: none;
+        border-color: var(--apple-blue);
+      }
+
+      /* Products Grid */
+      .products-section {
+        padding: 40px 0 100px 0;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .product-card {
+        background-color: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background-color: var(--apple-green);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        z-index: 2;
+      }
+
+      .product-badge.sale {
+        background-color: var(--apple-red);
+      }
+
+      .product-badge.discount {
+        background-color: var(--apple-orange);
+      }
+
+      .product-badge.out-of-stock {
+        background-color: var(--apple-gray);
+      }
+
+      .product-image {
+        width: 100%;
+        height: 240px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--apple-light-gray);
+      }
+
+      .product-image img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .product-content {
+        padding: 24px;
+      }
+
+      .product-category {
+        font-size: 12px;
+        color: var(--apple-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 8px;
+      }
+
+      .product-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--apple-text);
+        margin-bottom: 12px;
+        line-height: 1.3;
+      }
+
+      .product-description {
+        font-size: 14px;
+        color: var(--apple-text-secondary);
+        line-height: 1.5;
+        margin-bottom: 16px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .product-price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .current-price {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--apple-text);
+      }
+
+      .original-price {
+        font-size: 16px;
+        color: var(--apple-text-secondary);
+        text-decoration: line-through;
+      }
+
+      .discount-percent {
+        background-color: var(--apple-red);
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: 600;
+      }
+
+      .product-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background-color: var(--apple-blue);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px 16px;
+        flex: 1;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056d6;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        border: 1px solid var(--apple-light-gray);
+        border-radius: 8px;
+        color: var(--apple-text);
+        font-size: 14px;
+        padding: 9px 12px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--apple-light-gray);
+      }
+
+      /* Load More */
+      .load-more {
+        text-align: center;
+        margin: 60px 0;
+      }
+
+      .btn-load-more {
+        background-color: var(--apple-dark);
+        border: none;
+        border-radius: 980px;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 12px 32px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-load-more:hover {
+        background-color: #2c2c2e;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--apple-dark);
+        color: white;
+        padding: 60px 0 40px 0;
+        margin-top: 100px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h4 {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 20px;
+        color: var(--apple-gray);
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 12px;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--apple-blue);
+      }
+
+      .footer-brand img {
+        height: 40px;
+        margin-bottom: 16px;
+      }
+
+      .footer-brand p {
+        font-size: 12px;
+        color: var(--apple-gray);
+        margin-bottom: 20px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 12px;
+      }
+
+      .social-links a {
+        width: 32px;
+        height: 32px;
+        background-color: var(--apple-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: #0056d6;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #333;
+        padding-top: 20px;
+        text-align: center;
+      }
+
+      .footer-bottom p {
+        font-size: 12px;
+        color: var(--apple-gray);
+        margin: 0;
+      }
+
+      /* WhatsApp Button */
+      .whatsapp-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: white;
+        border-radius: 50px;
+        padding: 12px 20px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        z-index: 1000;
+        transition: transform 0.3s ease;
+      }
+
+      .whatsapp-btn:hover {
+        transform: translateY(-2px);
+        color: white;
+      }
+
+      .whatsapp-btn i {
+        margin-right: 8px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .products-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+        }
+
+        .page-header h1 {
+          font-size: 36px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .products-grid {
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 16px;
+        }
+
+        .filter-controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .filter-right {
+          justify-content: space-between;
+        }
+
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .page-header h1 {
+          font-size: 32px;
+        }
+
+        .page-header {
+          padding: 40px 0 30px 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .page-header h1 {
+          font-size: 28px;
+        }
+
+        .filter-controls {
+          gap: 16px;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeInUp 0.8s ease-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Marquee Top Bar -->
+    <div class="marquee-container">
+      <div class="marquee">
+        <span class="marquee-item">MACBOOKS</span>
+        <span class="marquee-item">WATCHES</span>
+        <span class="marquee-item">AIR PODS</span>
+        <span class="marquee-item">SIGN UP & ENJOY 20% OFF</span>
+        <span class="marquee-item">FREE SHIPPING ON ALL INDIA</span>
+        <span class="marquee-item">WELCOME TO THE APPLE STORE</span>
+        <span class="marquee-item">IPHONES</span>
+        <span class="marquee-item">IPAD AIR</span>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+            alt="Apple Store"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="products.html"
+                >iPhone <i class="fas fa-chevron-down"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html"
+                >iPad <i class="fas fa-chevron-down"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html"
+                >Watches <i class="fas fa-chevron-down"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html"
+                >MacBook <i class="fas fa-chevron-down"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html"
+                >AirPods <i class="fas fa-chevron-down"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Hot Deals</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Accessories</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center">
+            <button class="btn btn-link p-2">
+              <i class="fas fa-search"></i>
+            </button>
+            <button class="btn btn-link p-2 position-relative">
+              <i class="fas fa-shopping-bag"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+                style="font-size: 10px"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>All Products</h1>
+        <p>Discover the complete collection of Apple products</p>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+      <div class="container">
+        <div class="filter-controls">
+          <div class="results-info">Showing 1-9 of 9 results</div>
+          <div class="filter-right">
+            <select class="sort-dropdown">
+              <option>Sort by latest</option>
+              <option>Sort by popularity</option>
+              <option>Sort by price: low to high</option>
+              <option>Sort by price: high to low</option>
+              <option>Sort by rating</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+      <div class="container">
+        <div class="products-grid fade-in">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <div class="product-badge sale">Sale!</div>
+            <div class="product-image">
+              <a href="productdetailspage.html" class="product-card">
+                <img
+                  src="https://images.macrumors.com/t/SmIQxxD8PeNRatir3RFKfqT519g=/3532x/article-new/2023/09/iPhone-16-Side-2-Feature.jpg"
+                  alt="iPhone 13"
+                />
+              </a>
+            </div>
+            <div class="product-content">
+              <div class="product-category">iPhone, iPhone 13</div>
+              <h3 class="product-title">Apple iPhone 13</h3>
+              <p class="product-description">
+                iPhone 13. The most advanced dual-camera system ever on iPhone.
+                Lightning-fast A15 Bionic chip.
+              </p>
+              <div class="product-price">
+                <span class="current-price">₹44,900.00</span>
+                <span class="original-price">₹54,900.00</span>
+                <span class="discount-percent">-18%</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-primary">Add to Cart</button>
+                <button class="btn-secondary">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card">
+            <div class="product-badge sale">Sale!</div>
+            <div class="product-image">
+              <img
+                src="https://images.macrumors.com/t/SmIQxxD8PeNRatir3RFKfqT519g=/3532x/article-new/2023/09/iPhone-16-Side-2-Feature.jpg"
+                alt="iPhone 15 plus"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-category">iPhone, iPhone 15 plus</div>
+              <h3 class="product-title">Apple iPhone 15 Plus</h3>
+              <p class="product-description">
+                iPhone 15 Plus. Dynamic Island. 48MP Main camera. All-day
+                battery life.
+              </p>
+              <div class="product-price">
+                <span class="current-price">₹69,900.00</span>
+                <span class="original-price">₹79,900.00</span>
+                <span class="discount-percent">-13%</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-primary">Add to Cart</button>
+                <button class="btn-secondary">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card">
+            <div class="product-badge sale">Sale!</div>
+            <div class="product-image">
+              <img
+                src="https://images.macrumors.com/t/SmIQxxD8PeNRatir3RFKfqT519g=/3532x/article-new/2023/09/iPhone-16-Side-2-Feature.jpg"
+                alt="iPhone 15"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-category">iPhone, iPhone 15</div>
+              <h3 class="product-title">Apple iPhone 15</h3>
+              <p class="product-description">
+                iPhone 15. New camera. New design. Newphoria. Dynamic Island
+                comes to iPhone 15.
+              </p>
+              <div class="product-price">
+                <span class="current-price">₹61,900.00</span>
+                <span class="original-price">₹79,900.00</span>
+                <span class="discount-percent">-23%</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-primary">Add to Cart</button>
+                <button class="btn-secondary">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card">
+            <div class="product-badge sale">Sale!</div>
+            <div class="product-image">
+              <img
+                src="https://images.macrumors.com/t/SmIQxxD8PeNRatir3RFKfqT519g=/3532x/article-new/2023/09/iPhone-16-Side-2-Feature.jpg"
+                alt="iPhone 14"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-category">iPhone, iPhone 14</div>
+              <h3 class="product-title">Apple iPhone 14</h3>
+              <p class="product-description">
+                iPhone 14. Big and bigger. iPhone 14 Plus has the longest
+                battery life ever.
+              </p>
+              <div class="product-price">
+                <span class="current-price">₹54,900.00</span>
+                <span class="original-price">₹69,900.00</span>
+                <span class="discount-percent">-21%</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-primary">Add to Cart</button>
+                <button class="btn-secondary">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 5 -->
+          <div class="product-card">
+            <div class="product-badge out-of-stock">Out of Stock</div>
+            <div class="product-image">
+              <img
+                src="https://images.macrumors.com/t/SmIQxxD8PeNRatir3RFKfqT519g=/3532x/article-new/2023/09/iPhone-16-Side-2-Feature.jpg"
+                alt="iPhone 14 plus"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-category">iPhone, iPhone 14 plus</div>
+              <h3 class="product-title">Apple iPhone 14 Plus</h3>
+              <p class="product-description">
+                iPhone 14 Plus. The longest battery life ever in an iPhone. Up
+                to 26 hours video playback.
+              </p>
+              <div class="product-price">
+                <span class="current-price">₹62,900.00</span>
+                <span class="original-price">₹79,900.00</span>
+                <span class="discount-percent">-21%</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-primary" disabled>Out of Stock</button>
+                <button class="btn-secondary">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 6 -->
+          <div class="product-card">
+            <div class="product-badge sale">Sale!</div>
+            <div class="product-image">
+              <img
+                src="https://images.macrumors.com/t/SmIQxxD8PeNRatir3RFKfqT519g=/3532x/article-new/2023/09/iPhone-16-Side-2-Feature.jpg"
+                alt="iPhone 16"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-category">iPhone, iPhone 16</div>
+              <h3 class="product-title">Apple iPhone 16</h3>
+              <p class="product-description">
+                iPhone 16. Built for Apple Intelligence. Camera Control. Action
+                Button. All-new ultrawide camera.
+              </p>
+              <div class="product-price">
+                <span class="current-price">₹69,900.00</span>
+                <span class="original-price">₹103,200.00</span>
+                <span class="discount-percent">-32%</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-primary">Add to Cart</button>
+                <button class="btn-secondary">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 7 -->
+          <div class="product-card">
+            <div class="product-badge sale">Sale!</div>
+            <div class="product-image">
+              <img
+                src="https://images.macrumors.com/t/SmIQxxD8PeNRatir3RFKfqT519g=/3532x/article-new/2023/09/iPhone-16-Side-2-Feature.jpg"
+                alt="iPhone 16 Pro"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-category">iPhone, iPhone 16 pro</div>
+              <h3 class="product-title">Apple iPhone 16 Pro</h3>
+              <p class="product-description">
+                iPhone 16 Pro. Built for Apple Intelligence. Larger 6.3" and
+                6.9" displays. Camera Control. 4K 120 fps Dolby Vision.
+              </p>
+              <div class="product-price">
+                <span class="current-price">₹109,900.00</span>
+                <span class="original-price">₹159,900.00</span>
+                <span class="discount-percent">-31%</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-primary">Add to Cart</button>
+                <button class="btn-secondary">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 8 -->
+          <div class="product-card">
+            <div class="product-badge sale">Sale!</div>
+            <div class="product-image">
+              <img
+                src="https://images.macrumors.com/t/SmIQxxD8PeNRatir3RFKfqT519g=/3532x/article-new/2023/09/iPhone-16-Side-2-Feature.jpg"
+                alt="iPhone 15"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-category">iPhone, iPhone 15</div>
+              <h3 class="product-title">Apple iPhone 15</h3>
+              <p class="product-description">
+                iPhone 15. New camera. New design. Newphoria. Dynamic Island
+                comes to iPhone 15.
+              </p>
+              <div class="product-price">
+                <span class="current-price">₹61,900.00</span>
+                <span class="original-price">₹89,900.00</span>
+                <span class="discount-percent">-31%</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-primary">Add to Cart</button>
+                <button class="btn-secondary">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 9 -->
+          <div class="product-card">
+            <div class="product-badge discount">-5%</div>
+            <div class="product-image">
+              <img
+                src="https://images.macrumors.com/t/SmIQxxD8PeNRatir3RFKfqT519g=/3532x/article-new/2023/09/iPhone-16-Side-2-Feature.jpg"
+                alt="USB-C Cable"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-category">Accessories</div>
+              <h3 class="product-title">60W USB-C To C Charge Cable (1m)</h3>
+              <p class="product-description">
+                This 1-meter charge cable features USB-C connectors on both ends
+                and is ideal for charging, syncing, and data transfer.
+              </p>
+              <div class="product-price">
+                <span class="current-price">₹1,805.00</span>
+                <span class="original-price">₹1,900.00</span>
+                <span class="discount-percent">-5%</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn-primary">Add to Cart</button>
+                <button class="btn-secondary">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more">
+          <button class="btn-load-more">Load More Products</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <div class="footer-brand">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                alt="Apple Store"
+                style="filter: invert(1)"
+              />
+              <p>Apple Store in</p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4>Product Categories</h4>
+            <ul class="footer-links">
+              <li><a href="#">Accessories</a></li>
+              <li><a href="#">AirPods</a></li>
+              <li><a href="#">Watches</a></li>
+              <li><a href="#">CTO</a></li>
+              <li><a href="#">iPad</a></li>
+              <li><a href="#">iPhone</a></li>
+              <li><a href="#">MacBook</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Address</h4>
+            <p>
+              266/A/1, near Jain Mandir, Upadhyay Nagar, New Timber Market,
+              Bhavani Peth, Pune, 411042, Maharashtra, India
+            </p>
+          </div>
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Refund and Returns Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Copyright © 2025 THE APPLE STORE</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/1234567890" class="whatsapp-btn">
+      <i class="fab fa-whatsapp"></i>Click here
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Add scroll effect to navbar
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.style.background = "rgba(255, 255, 255, 0.95)";
+        } else {
+          navbar.style.background = "rgba(255, 255, 255, 0.8)";
+        }
+      });
+
+      // Add fade-in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        observer.observe(el);
+      });
+
+      // Add to cart functionality
+      document.querySelectorAll(".btn-primary").forEach((button) => {
+        button.addEventListener("click", function (e) {
+          if (this.textContent.trim() === "Add to Cart") {
+            // Add visual feedback
+            const originalText = this.textContent;
+            this.textContent = "Added!";
+            this.style.backgroundColor = "var(--apple-green)";
+
+            setTimeout(() => {
+              this.textContent = originalText;
+              this.style.backgroundColor = "var(--apple-blue)";
+            }, 1500);
+
+            // Update cart badge
+            const cartBadge = document.querySelector(".badge");
+            const currentCount = parseInt(cartBadge.textContent);
+            cartBadge.textContent = currentCount + 1;
+          }
+        });
+      });
+
+      // Wishlist functionality
+      document.querySelectorAll(".btn-secondary").forEach((button) => {
+        button.addEventListener("click", function () {
+          const icon = this.querySelector("i");
+          if (icon.classList.contains("far")) {
+            icon.classList.remove("far");
+            icon.classList.add("fas");
+            this.style.color = "var(--apple-red)";
+          } else {
+            icon.classList.remove("fas");
+            icon.classList.add("far");
+            this.style.color = "var(--apple-text)";
+          }
+        });
+      });
+
+      // Load more functionality
+      document
+        .querySelector(".btn-load-more")
+        .addEventListener("click", function () {
+          this.textContent = "Loading...";
+          this.disabled = true;
+
+          setTimeout(() => {
+            this.textContent = "No more products";
+            this.style.opacity = "0.6";
+          }, 2000);
+        });
+    </script>
+  </body>
+</html>
